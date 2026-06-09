@@ -11,11 +11,11 @@ class PantallaCalculadoraTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun verificarBotonSumaYResultado() {
+    fun verificarBotonYResultado() {
         composeTestRule.setContent { PantallaCalculadora() }
 
-        // Interactuar con el primer botón
-        composeTestRule.onNodeWithText("Sumar (5+3)").performClick()
+        // Interactuar con el botón principal (Paso 9)
+        composeTestRule.onNodeWithText("Calcular").performClick()
 
         // Validar el resultado
         composeTestRule.onNodeWithTag("resultado").assertTextEquals("8")

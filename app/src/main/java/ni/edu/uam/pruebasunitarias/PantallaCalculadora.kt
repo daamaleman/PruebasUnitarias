@@ -15,11 +15,11 @@ fun PantallaCalculadora() {
 
     Column(modifier = Modifier.padding(16.dp)) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            // Botón 1: Suma
+            // Botón 1: Suma (Paso 3)
             Button(
                 onClick = { resultado = calculadora.sumar(5, 3).toString() }
             ) {
-                Text("Sumar (5+3)")
+                Text("Calcular")
             }
 
             // Botón 2: Resta (Actividad Complementaria)

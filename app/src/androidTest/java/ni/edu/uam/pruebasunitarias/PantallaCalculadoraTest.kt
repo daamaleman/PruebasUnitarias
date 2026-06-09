@@ -11,22 +11,41 @@ class PantallaCalculadoraTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun verificarBotonYResultado() {
+    fun verificarSumaCompleta() {
         composeTestRule.setContent { PantallaCalculadora() }
 
-        // Interactuar con el botón principal (Paso 9)
-        composeTestRule.onNodeWithText("Calcular").performClick()
+        // Realizar 5 + 3 = 8
+        composeTestRule.onNodeWithText("5").performClick()
+        composeTestRule.onNodeWithText("+").performClick()
+        composeTestRule.onNodeWithText("3").performClick()
+        composeTestRule.onNodeWithText("=").performClick()
 
         // Validar el resultado
         composeTestRule.onNodeWithTag("resultado").assertTextEquals("8")
     }
 
     @Test
-    fun verificarBotonRestaYResultado() {
+    fun verificarLimpiarPantalla() {
         composeTestRule.setContent { PantallaCalculadora() }
 
-        // Actividad complementaria: Interactuar con el segundo botón
-        composeTestRule.onNodeWithText("Restar (10-4)").performClick()
+        // Escribir algo y luego limpiar
+        composeTestRule.onNodeWithText("9").performClick()
+        composeTestRule.onNodeWithText("C").performClick()
+
+        // El display debe volver a 0
+        composeTestRule.onNodeWithTag("resultado").assertTextEquals("0")
+    }
+
+    @Test
+    fun verificarRestaCompleta() {
+        composeTestRule.setContent { PantallaCalculadora() }
+
+        // Realizar 10 - 4 = 6
+        composeTestRule.onNodeWithText("1").performClick()
+        composeTestRule.onNodeWithText("0").performClick()
+        composeTestRule.onNodeWithText("-").performClick()
+        composeTestRule.onNodeWithText("4").performClick()
+        composeTestRule.onNodeWithText("=").performClick()
 
         // Validar el resultado
         composeTestRule.onNodeWithTag("resultado").assertTextEquals("6")
